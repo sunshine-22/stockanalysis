@@ -1,0 +1,12 @@
+plt.switch_backend("AGG")
+    plt.figure(figsize=(10,10))
+    plt.plot(bank,stock_change)
+    plt.tight_layout()
+    buffer=BytesIO()
+    plt.savefig(buffer,format="png")
+    buffer.seek(0)
+    image=buffer.getvalue()
+    pi=base64.b64encode(image)
+    pi=pi.decode("utf-8")
+    buffer.close()
+    return piegraph
